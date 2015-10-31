@@ -142,14 +142,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainPanel.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MainPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.79141104">
-              <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Boxer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Boxer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObservaBoxer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ObservaBoxer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.40490797">
+              <caret line="22" column="7" selection-start-line="13" selection-start-column="2" selection-end-line="22" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -186,6 +206,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/gui.java" />
         <option value="$PROJECT_DIR$/src/MainPanel.java" />
+        <option value="$PROJECT_DIR$/src/Boxer.java" />
+        <option value="$PROJECT_DIR$/src/ObservaBoxer.java" />
       </list>
     </option>
   </component>
@@ -509,11 +531,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79141104">
-          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="55" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Boxer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ObservaBoxer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40490797">
+          <caret line="22" column="7" selection-start-line="13" selection-start-column="2" selection-end-line="22" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>

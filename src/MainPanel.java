@@ -54,7 +54,7 @@ public class MainPanel extends JPanel {
 
 
     }
-    
+
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
