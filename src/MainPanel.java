@@ -28,7 +28,6 @@ public class MainPanel extends JPanel {
 
 
 
-
         fatigueLblP1 = new JLabel(" P1 Fatigue: 0   ");
         strengthLblP1= new JLabel(" P1 Strength: 0  ");
         agilityLblP1= new JLabel("  P1 Agility: 0   ");
@@ -55,9 +54,7 @@ public class MainPanel extends JPanel {
 
 
     }
-
-// added a comment
-    //added another comment
+    
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

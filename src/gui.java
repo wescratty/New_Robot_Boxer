@@ -12,6 +12,5 @@ public class gui {
         mainFrame.setLocation(200, 200);
         mainFrame.setVisible(true);
 
-        
     }
 }
