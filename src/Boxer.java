@@ -1,14 +1,14 @@
 /**
  * Created by wescratty on 10/31/15.
  */
-public class Boxer {
+public class Boxer extends ObservaBoxer {
     private int fatigue;
     private int strengthScore;
     private int agilityScore;
     private int accuracy;
     private int reach;
-   // private rng:RNG
-    //private attackList ArrayList<Attack>
+    private RNG rng;
+//    private ArrayList<Attack> attackList;
     //private block:Block
     //public location:(double,double)
     private int exp;
