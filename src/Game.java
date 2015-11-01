@@ -38,7 +38,7 @@ public class Game implements Runnable{
 
     public void  run(){
 
-        for(int i = 1; i <= 20; i++){
+        for(int i = 1; i <= 40; i++){
 
 //            try{
                 // get thread to see if b1 or b2 boxer

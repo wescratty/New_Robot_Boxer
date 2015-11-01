@@ -16,10 +16,11 @@ public class Boxer implements Subject {
     private int agilityScore;
     private int accuracy;
     private int reach;
-    private int punchTime = 500;
+    private int punchTime = 1000;
     int punchNum =0;
     private RNG rng;
     private Point center;
+    private AudioPlayer player;
     //    private ArrayList<Attack> attackList;
     //private block:Block
     //public location:(double,double)
@@ -66,6 +67,7 @@ public int selectMove(){
         System.out.println("Boxer with id: " + this.id + " decided to stand there");
 
     }
+    checkForPunch();
 
 
     return 0;
@@ -163,6 +165,7 @@ public int selectMove(){
 
                 notifyObserverOfPunch();  //punch in motion
                 Thread.sleep(punchTime);  // wait
+//                checkForPunch();
                 observerCheckDidBLock();  // see if blocked
 //
             }catch(InterruptedException e)
@@ -171,12 +174,18 @@ public int selectMove(){
         }
 
     public void checkDidBlock(){
-        if(didBLock){
+        AudioPlayer player=AudioPlayer.getInstance();
+
+        if(this.didBLock){
             System.out.println(this.id+" blocked punch");
+            player.blockSound();
         }else{
             System.out.println(this.id+" got Punched in face");
+            player.punchSound();
         }
-        didBLock = false;
+//        player.punchSound();
+        this.didBLock = false;
+//        this.sentMessage= false;
         //return this.didBLock;
 
     }
