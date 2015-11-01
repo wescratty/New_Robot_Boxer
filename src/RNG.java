@@ -1,6 +1,10 @@
 /**
  * Created by wescratty on 10/31/15.
  */
+
+// TODO On Uml this is an interface but I have not found a way to make a singleton interface or should we just have all
+// of the methods in here?
+
 public class RNG extends ChanceBot {
     private static RNG ourInstance = new RNG();
 
@@ -12,19 +16,8 @@ public class RNG extends ChanceBot {
     }
 
 
-    int temp =0;
 
 
-    int i = getRandomAttackDelay();
-
-
-    int l = getRandomChoice(temp);
-
-
-    int j = getChance();
-
-
-    int k = getCoinFlip();
 
 
 

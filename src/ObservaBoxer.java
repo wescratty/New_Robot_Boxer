@@ -10,7 +10,6 @@ public class ObservaBoxer {
 
 
 
-
 //
 //    public void register(object){
 //

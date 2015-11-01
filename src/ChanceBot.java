@@ -13,10 +13,10 @@ public class ChanceBot {
 
 
 
-//    public int getInstance(){
-//        return random.nextInt();
-//
-//    }
+    public int getRandInstance(){
+        return random.nextInt();
+
+    }
     public int getRandomAttackDelay(){
         return random.nextInt();
 
@@ -30,7 +30,10 @@ public class ChanceBot {
 
     }
     public int getCoinFlip(){
-        return random.nextInt();
+
+        return random.nextInt(2);
+
+
 
     }
 

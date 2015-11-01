@@ -1,20 +1,10 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.border.EtchedBorder;
 
 
 public class MainPanel extends JPanel {
@@ -22,12 +12,16 @@ public class MainPanel extends JPanel {
     public MainPanel() {
 
 
-        JLabel  fatigueLblP1, strengthLblP1, agilityLblP1, fatigueLblP2, strengthLblP2, agilityLblP2;
-        JPanel labelPanel = new JPanel();
+        JLabel  fatigueLblP1, strengthLblP1, agilityLblP1, fatigueLblP2, strengthLblP2, agilityLblP2, time,timer, splash;
+        JPanel b1LabelPanel = new JPanel();
+        JPanel b2LabelPanel = new JPanel();
+        JPanel gameLabelPanel = new JPanel();
+        JPanel subPanel = new JPanel();
 
 
-
-
+        time = new JLabel("Time left in bought: ");
+        timer = new JLabel("5:00");
+        splash = new JLabel("client message");
         fatigueLblP1 = new JLabel(" P1 Fatigue: 0   ");
         strengthLblP1= new JLabel(" P1 Strength: 0  ");
         agilityLblP1= new JLabel("  P1 Agility: 0   ");
@@ -35,25 +29,72 @@ public class MainPanel extends JPanel {
         strengthLblP2= new JLabel(" P2 Strength: 0  ");
         agilityLblP2= new JLabel("  P2 Agility: 0   ");
 
-        labelPanel.add(fatigueLblP1);
-        labelPanel.add(strengthLblP1);
-        labelPanel.add(agilityLblP1);
+        b1LabelPanel.add(fatigueLblP1);
+        b1LabelPanel.add(strengthLblP1);
+        b1LabelPanel.add(agilityLblP1);
+        b1LabelPanel.setLayout(new BoxLayout(b1LabelPanel, BoxLayout.PAGE_AXIS));
+        b1LabelPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 
-        labelPanel.add(fatigueLblP2);
-        labelPanel.add(strengthLblP2);
-        labelPanel.add(agilityLblP2);
+        b2LabelPanel.add(fatigueLblP2);
+        b2LabelPanel.add(strengthLblP2);
+        b2LabelPanel.add(agilityLblP2);
+        b2LabelPanel.setLayout(new BoxLayout(b2LabelPanel, BoxLayout.PAGE_AXIS));
+        b2LabelPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 
+        gameLabelPanel.add(time);
+        gameLabelPanel.add(timer);
+        gameLabelPanel.add(splash);
+        gameLabelPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
+
+        subPanel.setLayout(new BorderLayout());
+        subPanel.add(b1LabelPanel, BorderLayout.EAST);
+        subPanel.add(b2LabelPanel, BorderLayout.WEST);
+        subPanel.add(gameLabelPanel, BorderLayout.CENTER);
+        subPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createLoweredBevelBorder());
-//        setPreferredSize(new Dimension(500, 750));
         setBackground(Color.GRAY);
 
-        add(labelPanel, BorderLayout.SOUTH);
+        add(subPanel, BorderLayout.SOUTH);
 
-
+        create();
 
     }
+
+    public void create(){
+
+
+        Boxer _boxer1 = new Boxer();
+        Boxer _boxer2 = new Boxer();
+
+        ObservaBoxing obs1 = new ObservaBoxing(_boxer1);
+        ObservaBoxing obs2 = new ObservaBoxing(_boxer2);
+
+        _boxer1.register(obs2);
+        _boxer2.register(obs1);
+        Runnable game = new Game(_boxer1,_boxer2,obs1,obs2);
+
+        Thread boxer1Thread = new Thread(game);
+        int b1Identifier = System.identityHashCode(boxer1Thread);
+        Thread boxer2Thread = new Thread(game);
+        int b2Identifier = System.identityHashCode(boxer2Thread);
+
+
+        _boxer1.setid(b1Identifier);
+        _boxer2.setid(b2Identifier);
+        System.out.print(_boxer1.getid());
+
+
+        boxer1Thread.start();
+        boxer2Thread.start();
+
+
+        //TODO +create() pushImageState(String state)<<no idea on formatting yet>>
+
+    }
+
+
 
 
     public void paintComponent(Graphics g) {
@@ -62,10 +103,11 @@ public class MainPanel extends JPanel {
         int top = 100;
         int width = 800;
         int poleDiag = 80;
+        Point nw= new Point(100,100);
 
 
-
-        g.drawLine(top,top,top-poleDiag,top-poleDiag);
+        //create ring
+        g.drawLine(nw.X(),nw.Y(),top-poleDiag,top-poleDiag);
         g.drawLine(width,top,width+poleDiag,top-poleDiag);
         g.drawLine(top,width,top-poleDiag,width+poleDiag);
         g.drawLine(width, width, width + poleDiag, width + poleDiag);
@@ -76,7 +118,7 @@ public class MainPanel extends JPanel {
         g.drawLine(width,top,width,width);
         g.drawLine(top, width, width, width);
 
-        //g.setColor(Color.BLUE);
+
         g.drawArc(20,20,20,20,20,360);
         g.drawArc(20,860,20,20,20,360);
         g.drawArc(860,860,20,20,20,360);
@@ -89,42 +131,18 @@ public class MainPanel extends JPanel {
         g.drawArc(845,30,50,840,90,180);  //right rope
         g.drawArc(30, 845, 840, 50, 0, 180);
 
+
+        // Boxer 1
         g.setColor(Color.BLUE);
         g.fillArc(200, 400, 50, 50, 0, 360);
         g.fillArc(200+30, 400+50, 30, 30, 0, 360);
         g.fillArc(200+30, 400-30, 30, 30, 0, 360);
 
-
+        // Boxer 1
         g.setColor(Color.RED);
         g.fillArc(600, 400, 50, 50, 0, 360);
         g.fillArc(600, 400+50, 30, 30, 0, 360);
         g.fillArc(600, 400-30, 30, 30, 0, 360);
-
-
-
-        //Endpoint =(getLocationOnScreen());
-
-//		PointerInfo a = MouseInfo.getPointerInfo();
-//		Point b  = a.getLocation();
-//		 xx = (int)b.getX();
-//		 yy = (int)b.getY();
-//		g.drawLine(Startpoint.x,Startpoint.y,xx,yy);
-
-//            int i=0;
-//            try {
-//
-//                for (Point spot: pointListStart) {
-//
-//                    Point finish= pointListFinish.get(i);
-//                    g.drawLine(spot.x,spot.y, finish.x,finish.y);
-//                    i++;
-//                }
-//            } catch (Exception e) {
-//                // TODO: handle exception
-//
-//
-//
-//            }
 
     }
 
