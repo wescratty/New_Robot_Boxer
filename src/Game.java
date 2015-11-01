@@ -22,43 +22,28 @@ public class Game implements Runnable{
 
     public Game(){}
 
-    public Game(Boxer b1,Boxer b2,ObservaBoxing obs1, ObservaBoxing obs2){
+    public Game(Boxer b1,Boxer b2){
 
 
         boxers[0]=b1;
         boxers[1]=b2;
-        this.obs1=obs1;
-        this.obs2=obs2;
-
-
+//        this.obs1=obs1;
+//        this.obs2=obs2;
 
     }
-
-
 
     public void  run(){
 
         for(int i = 1; i <= 40; i++){
 
-//            try{
-                // get thread to see if b1 or b2 boxer
-                if (System.identityHashCode(Thread.currentThread())==boxers[1].getid()){
-                    boxers[1].selectMove();
-                    // this.obs1.update();
-                }else{
-                    boxers[0].selectMove();
-                }
-
-
-                // Sleep for 2 seconds
-//                Thread.sleep(1000*rand.getCoinFlip()+200);
-
-
+            // get thread to see if b1 or b2 boxer
+            if (System.identityHashCode(Thread.currentThread())==boxers[1].getid()){
+                boxers[1].selectMove();
+            }else{
+                boxers[0].selectMove();
             }
-//            catch(InterruptedException e)
-//            {}
 
-//        }
+        }
     }
 
 

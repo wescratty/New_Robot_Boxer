@@ -1,16 +1,6 @@
 /**
  * Created by wescratty on 11/1/15.
  */
-//import  sun.audio.*;
-//import sun.rmi.rmic.Main;
-//
-//import javax.sound.sampled.*;
-//import java.io.File;
-//import java.io.IOException;
-//import javax.sound.sampled.LineListener;
-
-
-//package net.codejava.sound;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,6 +15,9 @@ import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+
+// Please transition to the API's in AudioComponent.h.
+
 public class AudioPlayer implements LineListener {
     private static AudioPlayer ourInstance = new AudioPlayer();
 
@@ -38,16 +31,6 @@ public class AudioPlayer implements LineListener {
 
     boolean playCompleted;
     public void playSound(String audioFilePath){
-//        try {
-//            Clip clip = AudioSystem.getClip();
-//            AudioInputStream inputStream = AudioSystem.getAudioInputStream(
-//                    Main.class.getResourceAsStream("Realistic_Punch-Mark_DiAngelo-1609462330.mp3" + url));
-//            clip.open(inputStream);
-//            clip.start();
-//
-//        } catch (Exception e) {
-//        System.err.println(e.getMessage());
-//    }
 
         File audioFile = new File(audioFilePath);
 
@@ -93,11 +76,10 @@ public class AudioPlayer implements LineListener {
 
     public void punchSound(){
         playSound("/Users/wescratty/GitHub/javaRepos/javaRepo/New_Robot_Boxer/punch.wav");
-//System.out.println(AudioSystem.getAudioFileTypes());
     }
+
     public void blockSound(){
         playSound("/Users/wescratty/GitHub/javaRepos/javaRepo/New_Robot_Boxer/block.wav");
-//System.out.println(AudioSystem.getAudioFileTypes());
     }
 
     public void update(LineEvent event) {

@@ -1,7 +1,4 @@
-import java.awt.*;
-import java.util.Objects;
-//import java.util.Observable;
-//import java.util.Observer;
+
 import java.util.ArrayList;
 
 /**
@@ -33,9 +30,8 @@ public class Boxer implements Subject {
     private  ChanceBot chance = new ChanceBot();
 
 
-
+// constructor
     public Boxer() {
-
 
         observers = new ArrayList<Observer>();
 
@@ -44,7 +40,6 @@ public class Boxer implements Subject {
     public void setid(int id, int bNum){
         this.id = id;
         this.bNum = bNum;
-
     }
 
     public int getid(){
@@ -52,84 +47,74 @@ public class Boxer implements Subject {
     }
 
 
-public int selectMove(){
-//    this.punchNum = i;
-    //TODO random move
+    public int selectMove(){
 
-    checkForPunch();
-    int choice =chance.getRandomChoice();
-    if(choice==0){
-    System.out.println("Boxer with id: " + this.id + " decided to punch"+ "Punch:  ");
-    punch();
-    }else if(choice==1) {
-        System.out.println("Boxer with id: "+this.id+" decided to stand there");
-    }else if(choice==3) {
-        System.out.println("Boxer with id: " + this.id + " decided to stand there");
+        checkForPunch();
+        int choice =chance.getRandomChoice();
+        if(choice==0){
+            System.out.println("Boxer with id: " + this.id + " decided to punch"+ "Punch:  ");
+            punch();
+        }else if(choice==1) {
+            System.out.println("Boxer with id: "+this.id+" decided to stand there");
+        }else if(choice==3) {
+            System.out.println("Boxer with id: " + this.id + " decided to stand there");
 
+        }
+        checkForPunch();
+
+
+        return 0;
     }
-    checkForPunch();
-
-
-    return 0;
-}
 
     public void setSentMessage(){
-//        if(this.punchNum!=i) {
-            sentMessage = true;
-            System.out.println("Boxer with id: " + this.id + " got message about punch: ");
-//        }
+        sentMessage = true;
+        System.out.println("Boxer with id: " + this.id + " got message about punch: ");
 
     }
 
-// Uses the Subject interface to update all Observers
 
+    public void register(Observer newObserver) {
 
+        // Adds a new observer to the ArrayList
 
+        observers.add(newObserver);
 
-        public void register(Observer newObserver) {
+    }
 
-            // Adds a new observer to the ArrayList
+    public void unregister(Observer deleteObserver) {
 
-            observers.add(newObserver);
+        // Get the index of the observer to delete
 
-        }
+        int observerIndex = observers.indexOf(deleteObserver);
 
-        public void unregister(Observer deleteObserver) {
+        // Print out message (Have to increment index to match)
 
-            // Get the index of the observer to delete
+        System.out.println("Observer " + (observerIndex+1) + " deleted");
 
-            int observerIndex = observers.indexOf(deleteObserver);
+        // Removes observer from the ArrayList
 
-            // Print out message (Have to increment index to match)
+        observers.remove(observerIndex);
 
-            System.out.println("Observer " + (observerIndex+1) + " deleted");
+    }
 
-            // Removes observer from the ArrayList
+    public void notifyObserverOfPunch() {
 
-            observers.remove(observerIndex);
+        // Cycle through all observers and notifies them
 
-        }
+        for(Observer observer : observers){
+            if(observer.getObserverId()!=this.bNum) {
 
-        public void notifyObserverOfPunch() {
-
-            // Cycle through all observers and notifies them of
-            // price changes
-
-            for(Observer observer : observers){
-                if(observer.getObserverId()!=this.bNum) {
-
-                    observer.notifyPunch();//ibmPrice, aaplPrice, googPrice
-                    System.out.println("Notifying Observer " + (observer.getObserverId()));
-                }
-
+                observer.notifyPunch();//ibmPrice, aaplPrice, googPrice
+                System.out.println("Notifying Observer " + (observer.getObserverId()));
             }
+
         }
+    }
 
 
     public void notifyObserver() {
 
-        // Cycle through all observers and notifies them of
-        // price changes
+        // Cycle through all observers and notifies them
 
         for(Observer observer : observers){
             if(observer.getObserverId()!=this.bNum) {
@@ -144,9 +129,7 @@ public int selectMove(){
 
     public void observerCheckDidBLock() {
 
-        // Cycle through all observers and notifies them of
-        // price changes
-
+        // Cycle through all observers and notifies them
         for(Observer observer : observers){
             if(observer.getObserverId()!=this.bNum) {
 
@@ -161,20 +144,19 @@ public int selectMove(){
 
     public void punch(){
 
-            try {
+        try {
 
-                notifyObserverOfPunch();  //punch in motion
-                Thread.sleep(punchTime);  // wait
-//                checkForPunch();
-                observerCheckDidBLock();  // see if blocked
-//
-            }catch(InterruptedException e)
-                {}
+            notifyObserverOfPunch();  //punch in motion
+            Thread.sleep(punchTime);  // wait
+            observerCheckDidBLock();  // see if blocked
 
-        }
+        }catch(InterruptedException e)
+        {}//TODO actually deal with exception
+
+    }
 
     public void checkDidBlock(){
-        AudioPlayer player=AudioPlayer.getInstance();
+        AudioPlayer player = AudioPlayer.getInstance();
 
         if(this.didBLock){
             System.out.println(this.id+" blocked punch");
@@ -183,12 +165,9 @@ public int selectMove(){
             System.out.println(this.id+" got Punched in face");
             player.punchSound();
         }
-//        player.punchSound();
         this.didBLock = false;
-//        this.sentMessage= false;
-        //return this.didBLock;
-
     }
+
 
     public void checkForPunch(){
         if(this.sentMessage){

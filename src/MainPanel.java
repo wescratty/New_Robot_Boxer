@@ -73,7 +73,7 @@ public class MainPanel extends JPanel {
 
         _boxer1.register(obs2);
         _boxer2.register(obs1);
-        Runnable game = new Game(_boxer1,_boxer2,obs1,obs2);
+        Runnable game = new Game(_boxer1,_boxer2);
 
         Thread boxer1Thread = new Thread(game);
         int b1Identifier = System.identityHashCode(boxer1Thread);
