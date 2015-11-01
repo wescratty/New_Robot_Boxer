@@ -25,13 +25,19 @@ public class ChanceBot {
         return random.nextInt(choices);
 
     }
-    public int getChance(){
-        return random.nextInt();
+    public double getChance(){
+        return random.nextDouble();
 
     }
-    public int getCoinFlip(){
-        return random.nextInt();
-
+    public boolean getCoinFlip(){
+        boolean flip = false;
+        double chance = random.nextDouble();
+        if(chance > 0.5){
+            flip = true;
+        }
+        return flip;
     }
+
+
 
 }
