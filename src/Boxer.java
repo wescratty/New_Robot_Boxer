@@ -20,7 +20,8 @@ public class Boxer implements Subject {
     private AudioPlayer player;
     //    private ArrayList<Attack> attackList;
     //private block:Block
-    //public location:(double,double)
+    int x,y = 0;
+    public Point location = new Point(x, y);
     private int exp;
 
     private ArrayList<Observer> observers;
@@ -50,14 +51,16 @@ public class Boxer implements Subject {
     public int selectMove(){
 
         checkForPunch();
+
         int choice =chance.getRandomChoice();
         if(choice==0){
             System.out.println("Boxer with id: " + this.id + " decided to punch"+ "Punch:  ");
             punch();
         }else if(choice==1) {
             System.out.println("Boxer with id: "+this.id+" decided to stand there");
-        }else if(choice==3) {
-            System.out.println("Boxer with id: " + this.id + " decided to stand there");
+        }else if(choice==2) {
+            System.out.println("Boxer with id: " + this.id + " decided to move");
+            sleepTime(chance.getRandomAttackDelay());
 
         }
         checkForPunch();
@@ -144,14 +147,9 @@ public class Boxer implements Subject {
 
     public void punch(){
 
-        try {
-
             notifyObserverOfPunch();  //punch in motion
-            Thread.sleep(punchTime);  // wait
+            sleepTime(punchTime);  // wait
             observerCheckDidBLock();  // see if blocked
-
-        }catch(InterruptedException e)
-        {}//TODO actually deal with exception
 
     }
 
@@ -164,6 +162,8 @@ public class Boxer implements Subject {
         }else{
             System.out.println(this.id+" got Punched in face");
             player.punchSound();
+            sleepTime(punchTime);
+
         }
         this.didBLock = false;
     }
@@ -174,6 +174,16 @@ public class Boxer implements Subject {
             this.sentMessage= false;
             this.didBLock = true;
         }
+    }
+
+    public void sleepTime(int sleepTime){
+        try {
+
+            Thread.sleep(sleepTime);  // wait
+
+        }catch(InterruptedException e)
+        {}//TODO actually deal with exception
+
     }
 
 
