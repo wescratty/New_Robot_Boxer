@@ -1,14 +1,18 @@
 /**
- * Created by wescratty on 10/31/15.
+ * Created by wescratty on 10/31/15.boolean  checkDidBLock();
  */
 public interface Observer {
 
-     void update(int i);
+     void update();
+
     //    HurtBox calculation;
      boolean  notifyRange();
      boolean  notifyPunch();
-     void update();
+
+
      int notifyDamage();
      int  calculateDamage();
+    int getObserverId();
+    void observerCheckDidBLock();
 
 }

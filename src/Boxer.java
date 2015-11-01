@@ -10,12 +10,14 @@ import java.util.ArrayList;
 public class Boxer implements Subject {
 
     private int id;
+    private int bNum;
     private int fatigue;
     private int strengthScore;
     private int agilityScore;
     private int accuracy;
     private int reach;
-    private int punchNum =0;
+    private int punchTime = 500;
+    int punchNum =0;
     private RNG rng;
     private Point center;
     //    private ArrayList<Attack> attackList;
@@ -26,6 +28,7 @@ public class Boxer implements Subject {
     private ArrayList<Observer> observers;
 
     public  boolean sentMessage = false;
+    public  boolean didBLock = false;
     private  ChanceBot chance = new ChanceBot();
 
 
@@ -37,8 +40,10 @@ public class Boxer implements Subject {
 
     }
 
-    public void setid(int id){
+    public void setid(int id, int bNum){
         this.id = id;
+        this.bNum = bNum;
+
     }
 
     public int getid(){
@@ -46,27 +51,31 @@ public class Boxer implements Subject {
     }
 
 
-public int selectMove(int i){
-    this.punchNum = i;
+public int selectMove(){
+//    this.punchNum = i;
     //TODO random move
-    if(chance.getCoinFlip()==1){
-    System.out.println("Boxer with id: " + this.id + " decided to punch");
-    punch(i);
-    }else{
+
+    checkForPunch();
+    int choice =chance.getRandomChoice();
+    if(choice==0){
+    System.out.println("Boxer with id: " + this.id + " decided to punch"+ "Punch:  ");
+    punch();
+    }else if(choice==1) {
         System.out.println("Boxer with id: "+this.id+" decided to stand there");
+    }else if(choice==3) {
+        System.out.println("Boxer with id: " + this.id + " decided to stand there");
+
     }
-
-
 
 
     return 0;
 }
 
-    public void setSentMessage(int i){
-        if(this.punchNum!=i) {
+    public void setSentMessage(){
+//        if(this.punchNum!=i) {
             sentMessage = true;
-            System.out.println("Boxer with id: " + this.id + " got message");
-        }
+            System.out.println("Boxer with id: " + this.id + " got message about punch: ");
+//        }
 
     }
 
@@ -99,26 +108,85 @@ public int selectMove(int i){
 
         }
 
-        public void notifyObserver(int i) {
+        public void notifyObserverOfPunch() {
 
             // Cycle through all observers and notifies them of
             // price changes
 
             for(Observer observer : observers){
+                if(observer.getObserverId()!=this.bNum) {
 
-                observer.update(i);//ibmPrice, aaplPrice, googPrice
+                    observer.notifyPunch();//ibmPrice, aaplPrice, googPrice
+                    System.out.println("Notifying Observer " + (observer.getObserverId()));
+                }
 
             }
         }
 
-        public void punch(int i){
 
+    public void notifyObserver() {
 
-            notifyObserver(i);
-//            Thread.sleep(punchTime);
-//            getBlockState();
+        // Cycle through all observers and notifies them of
+        // price changes
+
+        for(Observer observer : observers){
+            if(observer.getObserverId()!=this.bNum) {
+
+                observer.update();//ibmPrice, aaplPrice, googPrice
+                System.out.println("Notifying Observer " + (observer.getObserverId()));
+            }
 
         }
+    }
+
+
+    public void observerCheckDidBLock() {
+
+        // Cycle through all observers and notifies them of
+        // price changes
+
+        for(Observer observer : observers){
+            if(observer.getObserverId()!=this.bNum) {
+
+                observer.observerCheckDidBLock();//ibmPrice, aaplPrice, googPrice
+                System.out.println("Notifying Observer " + (observer.getObserverId()));
+            }
+
+        }
+    }
+
+
+
+    public void punch(){
+
+            try {
+
+                notifyObserverOfPunch();  //punch in motion
+                Thread.sleep(punchTime);  // wait
+                observerCheckDidBLock();  // see if blocked
+//
+            }catch(InterruptedException e)
+                {}
+
+        }
+
+    public void checkDidBlock(){
+        if(didBLock){
+            System.out.println(this.id+" blocked punch");
+        }else{
+            System.out.println(this.id+" got Punched in face");
+        }
+        didBLock = false;
+        //return this.didBLock;
+
+    }
+
+    public void checkForPunch(){
+        if(this.sentMessage){
+            this.sentMessage= false;
+            this.didBLock = true;
+        }
+    }
 
 
 

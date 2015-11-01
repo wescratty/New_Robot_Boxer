@@ -8,8 +8,11 @@ public interface Subject {
 
     void unregister(Observer o);
 
-    void notifyObserver(int i);
-    void setSentMessage(int i);
+    void notifyObserver();
+    void setSentMessage();
+    void notifyObserverOfPunch();
+    void checkDidBlock();
+//    boolean observerCheckDidBLock();
 
 
 

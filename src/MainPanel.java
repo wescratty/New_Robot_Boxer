@@ -81,8 +81,8 @@ public class MainPanel extends JPanel {
         int b2Identifier = System.identityHashCode(boxer2Thread);
 
 
-        _boxer1.setid(b1Identifier);
-        _boxer2.setid(b2Identifier);
+        _boxer1.setid(b1Identifier,1);
+        _boxer2.setid(b2Identifier,2);
         System.out.print(_boxer1.getid());
 
 

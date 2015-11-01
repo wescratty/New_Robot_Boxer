@@ -36,29 +36,29 @@ public class Game implements Runnable{
 
 
 
-    public void run(){
+    public void  run(){
 
         for(int i = 1; i <= 20; i++){
 
-            try{
+//            try{
                 // get thread to see if b1 or b2 boxer
                 if (System.identityHashCode(Thread.currentThread())==boxers[1].getid()){
-                    boxers[1].selectMove(i);
+                    boxers[1].selectMove();
                     // this.obs1.update();
                 }else{
-                    boxers[0].selectMove(i);
+                    boxers[0].selectMove();
                 }
 
 
                 // Sleep for 2 seconds
-                Thread.sleep(2000);
+//                Thread.sleep(1000*rand.getCoinFlip()+200);
 
 
             }
-            catch(InterruptedException e)
-            {}
+//            catch(InterruptedException e)
+//            {}
 
-        }
+//        }
     }
 
 
