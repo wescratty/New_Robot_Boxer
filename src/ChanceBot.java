@@ -3,12 +3,14 @@ import java.util.Random;
 /**
  * Created by wescratty on 10/31/15.
  */
-public class ChanceBot {
-    private Random random= new Random();
+public class ChanceBot extends RNG {
+    private Random random;
+
 
     public ChanceBot(){
-
-
+        super();
+        random= new Random();
+        ourInstance = this;
     }
 
 
@@ -21,12 +23,12 @@ public class ChanceBot {
         return random.nextInt(1000);
 
     }
-    public int getRandomChoice(){
+    public int getRandomChoice(int choices){
         return random.nextInt(3);
 
     }
-    public int getChance(){
-        return random.nextInt();
+    public double getChance(){
+        return random.nextDouble();
 
     }
     public int getCoinFlip(){
