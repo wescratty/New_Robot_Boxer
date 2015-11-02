@@ -3,10 +3,8 @@ import java.util.Random;
 /**
  * Created by wescratty on 10/31/15.
  */
-public class ChanceBot {
-    private Random random= new Random();
-
-    public ChanceBot(){
+public class ChanceBot extends RNG {
+    private Random random;
 
 
     public ChanceBot(){
