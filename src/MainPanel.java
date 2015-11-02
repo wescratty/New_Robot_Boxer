@@ -12,7 +12,7 @@ public class MainPanel extends JPanel {
     public MainPanel() {
 
 
-        JLabel  fatigueLblP1, strengthLblP1, agilityLblP1, fatigueLblP2, strengthLblP2, agilityLblP2, time,timer, splash;
+        JLabel  fatigueLblP1, strengthLblP1, agilityLblP1, fatigueLblP2, strengthLblP2, agilityLblP2, time, timer, splash;
         JPanel b1LabelPanel = new JPanel();
         JPanel b2LabelPanel = new JPanel();
         JPanel gameLabelPanel = new JPanel();
@@ -23,11 +23,11 @@ public class MainPanel extends JPanel {
         timer = new JLabel("5:00");
         splash = new JLabel("client message");
         fatigueLblP1 = new JLabel(" P1 Fatigue: 0   ");
-        strengthLblP1= new JLabel(" P1 Strength: 0  ");
-        agilityLblP1= new JLabel("  P1 Agility: 0   ");
-        fatigueLblP2= new JLabel("  P2 Fatigue: 0   ");
-        strengthLblP2= new JLabel(" P2 Strength: 0  ");
-        agilityLblP2= new JLabel("  P2 Agility: 0   ");
+        strengthLblP1 = new JLabel(" P1 Strength: 0  ");
+        agilityLblP1 = new JLabel("  P1 Agility: 0   ");
+        fatigueLblP2 = new JLabel("  P2 Fatigue: 0   ");
+        strengthLblP2 = new JLabel(" P2 Strength: 0  ");
+        agilityLblP2 = new JLabel("  P2 Agility: 0   ");
 
         b1LabelPanel.add(fatigueLblP1);
         b1LabelPanel.add(strengthLblP1);
@@ -54,7 +54,7 @@ public class MainPanel extends JPanel {
 
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createLoweredBevelBorder());
-        setBackground(Color.GRAY);
+        setBackground(Color.LIGHT_GRAY);
 
         add(subPanel, BorderLayout.SOUTH);
 
@@ -63,15 +63,17 @@ public class MainPanel extends JPanel {
     }
 
     public void create(){
+        Dialog boxer1Stats = Dialog.getInstance();
+        String b1Sts = boxer1Stats.getBoxerStats();
 
 
         Boxer _boxer1 = new Boxer();
         Boxer _boxer2 = new Boxer();
 
         ObservaBoxing obs1 = new ObservaBoxing(_boxer1);
-        ObservaBoxing obs2 = new ObservaBoxing(_boxer2);
+//        ObservaBoxing obs2 = new ObservaBoxing(_boxer2);
 
-        _boxer1.register(obs2);
+        _boxer1.register(obs1);
         _boxer2.register(obs1);
         Runnable game = new Game(_boxer1,_boxer2);
 
