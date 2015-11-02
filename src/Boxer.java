@@ -13,7 +13,8 @@ public class Boxer implements Subject {
     private int agilityScore;
     private int accuracy;
     private int reach;
-    private int punchTime = 1000;
+    private int punchTime = 500;
+    private int punchedTime = 1000;
     int punchNum =0;
     private RNG rng;
     private Point center;
@@ -162,7 +163,7 @@ public class Boxer implements Subject {
         }else{
             System.out.println(this.id+" got Punched in face");
             player.punchSound();
-            sleepTime(punchTime);
+            sleepTime(punchedTime);
 
         }
         this.didBLock = false;

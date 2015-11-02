@@ -34,7 +34,7 @@ public class Game implements Runnable{
 
     public void  run(){
 
-        for(int i = 1; i <= 40; i++){
+        for(int i = 1; i <= 20; i++){
 
             // get thread to see if b1 or b2 boxer
             if (System.identityHashCode(Thread.currentThread())==boxers[1].getid()){
@@ -44,6 +44,10 @@ public class Game implements Runnable{
             }
 
         }
+
+        AudioPlayer bell =  AudioPlayer.getInstance();
+        bell.bellSound();
+
     }
 
 

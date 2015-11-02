@@ -82,6 +82,10 @@ public class AudioPlayer implements LineListener {
         playSound("/Users/wescratty/GitHub/javaRepos/javaRepo/New_Robot_Boxer/block.wav");
     }
 
+    public void bellSound(){
+        playSound("/Users/wescratty/GitHub/javaRepos/javaRepo/New_Robot_Boxer/endRound.wav");
+    }
+
     public void update(LineEvent event) {
         LineEvent.Type type = event.getType();
 

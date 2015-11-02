@@ -82,12 +82,16 @@ public class MainPanel extends JPanel {
 
 
         _boxer1.setid(b1Identifier,1);
-        _boxer2.setid(b2Identifier,2);
+        _boxer2.setid(b2Identifier, 2);
         System.out.print(_boxer1.getid());
 
 
         boxer1Thread.start();
         boxer2Thread.start();
+//        try {
+//            boxer1Thread.join();
+//            boxer2Thread.join();
+//        }catch(Exception e){}
 
 
         //TODO +create() pushImageState(String state)<<no idea on formatting yet>>
