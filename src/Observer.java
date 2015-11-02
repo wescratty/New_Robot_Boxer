@@ -3,16 +3,12 @@
  */
 public interface Observer {
 
-     void update();
-
+    void update();
     //    HurtBox calculation;
-     boolean  notifyRange();
-     boolean  notifyPunch();
-
-
-     int notifyDamage();
-     int  calculateDamage();
+    boolean  notifyRange();
+    boolean  notifyPunch();
+    int notifyDamage();
+    int  calculateDamage();
     int getObserverId();
     void observerCheckDidBLock();
-
 }
