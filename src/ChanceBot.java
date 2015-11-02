@@ -9,6 +9,10 @@ public class ChanceBot {
     public ChanceBot(){
 
 
+    public ChanceBot(){
+        super();
+        random= new Random();
+        ourInstance = this;
     }
 
 
@@ -21,12 +25,12 @@ public class ChanceBot {
         return random.nextInt(1000);
 
     }
-    public int getRandomChoice(){
+    public int getRandomChoice(int choices){
         return random.nextInt(3);
 
     }
-    public int getChance(){
-        return random.nextInt();
+    public double getChance(){
+        return random.nextDouble();
 
     }
     public int getCoinFlip(){
