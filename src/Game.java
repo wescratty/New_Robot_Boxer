@@ -34,6 +34,10 @@ public class Game implements Runnable{
 
     public void  run(){
 
+        GameTimer gameTime = GameTimer.getInstance();
+        gameTime.Stopwatch();
+        System.out.println(gameTime.elapsedTime());
+
         for(int i = 1; i <= 20; i++){
 
             // get thread to see if b1 or b2 boxer
@@ -47,6 +51,7 @@ public class Game implements Runnable{
 
         AudioPlayer bell =  AudioPlayer.getInstance();
         bell.bellSound();
+        System.out.println(gameTime.elapsedTime());
 
     }
 

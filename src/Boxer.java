@@ -13,8 +13,8 @@ public class Boxer implements Subject {
     private int agilityScore;
     private int accuracy;
     private int reach;
-    private int punchTime = 200;
-    private int punchedTime = 100;
+    private int punchTime = 1000;
+    private int punchedTime = 2000;
     int punchNum =0;
     private RNG rng;
     private Point center;
