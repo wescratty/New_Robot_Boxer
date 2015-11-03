@@ -24,7 +24,7 @@ public class ChanceBot extends RNG {
 
     }
     public int getRandomChoice(int choices){
-        return random.nextInt(3);
+        return random.nextInt(choices);
 
     }
     public double getChance(){
