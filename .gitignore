@@ -1,2 +1,4 @@
 # No IDE artifacts
 .idea/
+.class/
+.DS_Store
