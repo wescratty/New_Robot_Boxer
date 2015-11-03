@@ -1,9 +1,7 @@
 # No IDE artifacts
 .idea/
-<<<<<<< HEAD
 .class/
-.DS_Store
-=======
+.DS_Store/
 .metadata/
 New_Robot_Boxer.iml
->>>>>>> origin/WesBranch
+
