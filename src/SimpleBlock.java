@@ -25,7 +25,6 @@ public class SimpleBlock implements Block {
     public String getStats(){
         return null;
     }
-
     @Override
     public int getTiming() {
         return timing;
