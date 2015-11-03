@@ -1,6 +1,5 @@
 # No IDE artifacts
 .idea/
-.class/
 .DS_Store/
 .metadata/
 New_Robot_Boxer.iml/
