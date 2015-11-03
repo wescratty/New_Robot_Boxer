@@ -25,7 +25,7 @@ public  abstract class RNG  {
     public abstract int getRandomAttackDelay();
     public abstract int getRandomChoice(int choices);
     public abstract double getChance();
-    public  abstract int getCoinFlip();
+    public abstract int getCoinFlip();
 
 
 
