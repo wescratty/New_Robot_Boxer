@@ -30,6 +30,7 @@ public class SimpleBlock implements Block {
         return timing;
     }
 
+
     @Override
     public void setTiming(int timing) {
         this.timing = timing;
