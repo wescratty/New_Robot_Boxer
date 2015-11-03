@@ -6,13 +6,12 @@
 // of the methods in here?
     //todo trying to find how to make this to interface rather than class not sure we can do this with statics might just have to go all abstract
 
-<<<<<<< HEAD
-public class RNG  {
-    private static RNG ourInstance = new RNG();
-=======
+
+//public class RNG  {
+//    private static RNG ourInstance = new RNG();
 public  abstract class RNG  {
     static RNG ourInstance = null;
->>>>>>> 6a4307590c26cafe5e8a88ca390ec26021b79bc0
+
 
     public static RNG getInstance() {
 
